@@ -11,6 +11,19 @@ class Attack:
         self.fuel_capacity = fuel_capacity
         self.mission_fit_score = mission_fit_score
 
+    def convert_to_dict(self):
+        return {
+            "Target City": self.target_city,
+            "Priority": self.priority,
+            "Assigned Pilot": self.assigned_pilot,
+            "Assigned Aircraft": self.assigned_aircraft,
+            "Distance": self.distance,
+            "Weather Conditions": self.weather_conditions,
+            "Pilot Skill": self.pilot_skill,
+            "Aircraft Speed": self.aircraft_speed,
+            "Aircraft Fuel Capacity": self.fuel_capacity,
+            "Mission Fit Score": self.mission_fit_score
+        }
 
 # attack = (
 # target_city,

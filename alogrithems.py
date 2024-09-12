@@ -34,9 +34,27 @@ def generate_missions(target_cities, aircrafts, pilots):
 
 
 
-def calc_somthing(max_wind_speed, missions):
-    for mission in missions:
+# def calc_score(mission):
+#     a = aircraft_type(mission.fuel_capacity)
+#     b = mission
 
+
+
+
+
+def aircraft_type(aircraft_fuel):
+    if aircraft_fuel > 6000:
+        return 10
+    elif 6000 > aircraft_fuel > 5000:
+        return 8
+    elif 5000 > aircraft_fuel > 3000:
+        return 6
+    elif 3000 > aircraft_fuel > 1000:
+        return 4
+    elif 1000 > aircraft_fuel > 0:
+        return 2
+    else:
+        return 1
 
 
 
