@@ -1,5 +1,5 @@
 import json
-from random import random, randint
+from random import randint
 
 from models.aircraft_model import Aircraft_Model
 from models.pilot_model import PilotModel
@@ -45,9 +45,15 @@ def get_target_cities_dict(path) -> dict[str, TargetCity]:
         target_cities_models["city{0}".format(i)] = (
             TargetCity(
                 target_cities_list[i - 1]['City'],
-                target_cities_list[i - 1]['Priority'],
+                target_cities_list[i - 1]['Priority']
                 ))
     return target_cities_models
+
+
+def cities_weather_to_json(list_weather: list):
+    with open('information_files/weather.json', 'w') as outfile:
+        json.dump(list_weather, outfile, indent=4, ensure_ascii=False)
+
 
 if __name__ == '__main__':
     print(randint(1, 100)/ 100)

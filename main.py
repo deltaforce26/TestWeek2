@@ -5,7 +5,9 @@ from alogrithems import *
 from models.attack_model import Attack
 from services import json_services as js
 from services.distance_service import cities_distance
-from services.weather_service import cities_weather
+# from services.weather_service import  cities_weather_to_json
+
+api_key = 'aba4e7c1beac7cedacc89f2f4edaae8b'
 
 # list of all the pilots
 pilots = js.get_pilots_dict('information_files/pilots.json')
@@ -18,7 +20,11 @@ target_cities = js.get_target_cities_dict('information_files/target_cities.json'
 
 
 # api request to get all the target cities weather
-cities_weather(target_cities, 'aba4e7c1beac7cedacc89f2f4edaae8b')
+list_weather = [{"condition": city.weather.weather_conditions,
+                 "clouds": city.weather.cloud_chance,
+                 "wind_speed": city.weather.wind_speed} for key, city in target_cities.items()]
+js.cities_weather_to_json(list_weather)
+
 # (target_cities['city1'].weather_conditions)
 cities_distance(target_cities)
 

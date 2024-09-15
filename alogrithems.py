@@ -1,8 +1,9 @@
 import json
-from random import random, randint
+
 
 from models import attack_model
 from models.attack_model import Attack
+from models.target_city_model import TargetCity
 from services.weather_service import weather_score
 
 
@@ -17,7 +18,7 @@ def get_max_wind_speed():
 
 
 
-def generate_missions(target_cities, aircrafts, pilots) -> list[attack_model]:
+def generate_missions(target_cities: dict[str, TargetCity], aircrafts, pilots) -> list[attack_model]:
     missions = []
     for key, city in target_cities.items():
         for key, aircraft in aircrafts.items():
@@ -28,12 +29,12 @@ def generate_missions(target_cities, aircrafts, pilots) -> list[attack_model]:
                     pilot.name,
                     aircraft.type,
                     city.distance,
-                    city.weather_conditions,
+                    city.weather.weather_conditions,
                     pilot.skill_level,
                     aircraft.speed,
                     aircraft.fuel_capacity,
-                    city.wind_speed,
-                    city.cloud_chance))
+                    city.weather.wind_speed,
+                    city.weather.cloud_chance))
     return missions
 
 
