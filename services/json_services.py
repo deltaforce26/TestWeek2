@@ -1,4 +1,6 @@
 import json
+from random import random, randint
+
 from models.aircraft_model import Aircraft_Model
 from models.pilot_model import PilotModel
 from models.target_city_model import TargetCity
@@ -48,4 +50,5 @@ def get_target_cities_dict(path) -> dict[str, TargetCity]:
     return target_cities_models
 
 if __name__ == '__main__':
+    print(randint(1, 100)/ 100)
     get_target_cities_dict('../information_files/target_cities.json')
